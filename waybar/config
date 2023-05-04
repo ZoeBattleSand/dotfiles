@@ -1,0 +1,105 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 34, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["wlr/workspaces", "wireplumber", "backlight", "battery"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["cpu", "memory", "tray", "clock"],
+    // Modules configuration
+     "wlr/workspaces": {
+         "disable-scroll": true,
+         "on-click": "activate",
+         // "all-outputs": false,
+         // "format": "{name}: {icon}",
+         "format": "{name}",
+         "on-scroll-up": "hyprctl dispatch workspace m-1 > /dev/null",
+         "on-scroll-down": "hyprctl dispatch workspace m+1 > /dev/null",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    "hyprland/window": {
+        "max-length":75,
+        "separate-outputs": true
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 0
+    },
+    "clock": {
+	"interval": 1,
+	"format": "{:%a %I:%M:%S %p %Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%I:%M:%S %p}"
+    },
+    "cpu": {
+	"interval": 2,
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+	"interval": 2,
+        "format": "{}% ",
+	"format-alt": "{used}GiB/{total}GiB ",
+	"tooltip-format": "{used}GiB/{total}GiB | {swapUsed}GiB/{swapAvail}GiB"
+    },
+    "backlight": {
+        "format": "{percent}% ",
+	"on-scroll-up": "brightnessctl -d amdgpu_bl0 s +1%",
+	"on-scroll-down": "brightnessctl -d amdgpu_bl0 s 1%-"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            // "warning": 30,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 🗲",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "pulseaudio": {
+        // "scroll-step": 10, // %, can be a float
+        "format": "{volume}%{icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "wireplumber": {
+	"format": "{volume}% {icon}",
+	"format-muted": "{volume}% ",
+	"on-click": "pavucontrol",
+	"format-icons": ["", "", ""],
+	"on-scroll-up": "amixer set Master 5%+",
+	"on-scroll-down": "amixer set Master 5%-"
+    }
+}
