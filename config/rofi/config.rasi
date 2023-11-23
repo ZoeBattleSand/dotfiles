@@ -1,0 +1,97 @@
+/* Part of zoe's super cool dotfiles
+ * Rofi Config, Version 1 Revision1
+ * Requirements (Arch Linux): n/a */
+
+configuration {
+	modes: "combi";
+	combi-modes: [ drun, run ];
+	show-icons: true;
+	display-combi: "Search";
+}
+
+* {
+	font: "IntelOne Mono 10";
+
+	bgclr: rgba(10, 10, 11, 90%);
+	textclr: #9f74e2;
+	highlightclr: #242429;
+	borderclr: #9f74e2;
+	errorclr: #cc4b4b;
+	bgtextclr: #686172;
+	seperatorclr: #686172;
+	transparent: rgba(0, 0, 0, 0%);
+
+	text-color: @textclr;
+	separatorcolor: @seperatorclr;
+}
+
+window {
+	background-color: @bgclr;
+	border-size: 2px;
+	border-radius: 4px;
+	border-color: @borderclr;
+}
+
+listview {
+	lines: 15;
+	columns: 2;
+	fixed-height: false;
+	background-color: @transparent;
+}
+
+element {
+	padding: 4px;
+	background-color: @transparent;
+}
+
+element selected.normal {
+	background-color: @highlightclr;
+	text-color: @textclr;
+	border: 0;
+}
+
+element normal.normal {
+	background-color: @transparent;
+	text-color: @textclr;
+}
+
+element alternate.normal {
+	background-color: @transparent;
+	text-color: @textclr;
+}
+
+textbox {
+	text-color: @errorclr;
+}
+
+prompt {
+	text-color: @textclr;
+}
+
+textbox-prompt-colon {
+	text-color: @bgtextclr;
+}
+
+entry {
+	placeholder: "...";
+	placeholder-color: @bgtextclr;
+	text-color: @textclr;
+}
+
+scrollbar {
+	width: 3px;
+	handle-color: @textclr;
+}
+
+num-rows {
+	text-color: @bgtextclr;
+}
+
+num-filtered-rows {
+	text-color: @bgtextclr;
+}
+
+textbox-num-sep {
+	str: " of ";
+	text-color: @bgtextclr;
+}
