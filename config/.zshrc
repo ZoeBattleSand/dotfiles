@@ -3953,7 +3953,7 @@ bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
 bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
 
 prompt off
-if [[ $TERM == 'linux' ]]; then
+if [[ $TERM == 'linux' || $TERM == 'xterm' ]]; then
     PROMPT='%B%F{blue}%n%F{red}@%F{magenta}%m %F{blue}%~%f%b > '
 else
     PROMPT='%B%F{99}%n%F{162}@%F{201}%m %F{63}%~%f%b > '
