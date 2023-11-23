@@ -1,0 +1,111 @@
+/* Part of zoe's super cool dotfiles
+ * Waybar Style, Version 1 Revision 1
+ * Requirments (Arch Linux): nerd-fonts, otf-font-awesome, intel-one-mono (aur), pavucontrol-qt, pactl (pulseaudio/pipewire-pulse), alacritty, nmtui (networkmanager) */
+
+* {
+	font-family: IntelOne Mono, sans-serif;
+	font-size: 13px;
+	margin-top: -1px;
+}
+
+@define-color bgclr #0a0a0b;
+@define-color bgclr rgba(10, 10, 11, 0.9);
+@define-color textclr #9f74e2;
+@define-color urgenttextclr #cc4b4b;
+@define-color borderclr #9f74e2;
+
+@define-color workspacesbgclr #242429;
+@define-color workspaceborderclr #d3cff1;
+@define-color workspaceurgentclr #4f1d1d;
+@define-color workspacehoverclr #18181b;
+
+
+window#waybar {
+	color: @textclr;
+	background: @bgclr;
+	border-bottom: 2px solid @borderclr;
+}
+
+#tray * {
+	margin-top: 0px;
+	padding-right: 4px;
+	padding-left: 10px;
+}
+
+#clock {
+}
+
+#idle_inhibitor {
+	padding-right: 14px;
+	padding-left: 14px;
+}
+
+#window {
+}
+
+#workspaces * {
+	margin-top: 0px;
+	color: @textclr;
+}
+
+#workspaces button.active {
+	background: @workspacesbgclr;
+	border-radius: 0px;
+	border-bottom: 5px solid @workspaceborderclr;
+
+}
+
+#workspaces button.urgent {
+	background: @workspaceurgentclr;
+	border-radius: 0px;
+	border-bottom: 2px solid @borderclr;
+}
+
+#workspaces button:hover {
+	color: @workspacehoverclr;
+	border-radius: 0px;
+	border-bottom: 2px solid @workspaceborderclr;
+}
+
+#workspaces button.active:hover {
+	background: @workspacehoverclr;
+	border-radius: 0px;
+	border-bottom: 4px solid @workspaceborderclr;
+}
+
+#cpu {
+	padding-left: 14px;
+}
+
+#temperature {
+	padding-left: 14px;
+}
+
+#memory {
+	padding-left: 14px;
+}
+
+#backlight {
+	padding-left: 14px;
+}
+
+#battery {
+	padding-left: 14px;
+}
+
+#battery.critical {
+	color: @urgenttextclr;
+}
+
+#network {
+	padding-left: 14px;
+}
+
+#pulseaudio {
+	padding-left: 14px;
+	padding-right: 8px;
+}
+
+#pulseaudio.muted {
+	color: @urgenttextclr;
+}
