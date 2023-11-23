@@ -1,0 +1,115 @@
+// Part of zoe's super cool dotfiles
+// Waybar Config, Version 1 Revision 1
+// Requirements (Arch Linux): nerd-fonts, otf-font-awesome, intel-one-mono (aur), pavucontrol-qt, pactl (pulseaudio/pipewire-pulse), alacritty, nmtui (networkmanager)
+
+{
+	"layer": "top",
+	"position": "top",
+	"height": 31,
+	"spacing": 10,
+
+	"modules-left": ["tray", "clock", "idle_inhibitor", "hyprland/window"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["cpu", "temperature", "memory", "backlight", "battery", "network", "pulseaudio"],
+
+	"tray": {
+		"icon-size": 18,
+		"spacing": 0
+	},
+
+	"clock": {
+		"interval": 1,
+		"format": "{:%I:%M:%S %p %a %Y-%m-%d} <span font='Font Awesome 6 Free'></span>",
+		"format-alt": "{:%I:%M %p} <span font='Font Awesome 6 Free'></span>",
+		"tooltip": true,
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+	},
+
+	"idle_inhibitor": {
+		"format": "Idle {icon}",
+		"format-icons": {
+			"activated": "<span font='Font Awesome 6 Free'></span>",
+			"deactivated": "<span font='Font Awesome 6 Free'></span>"
+		},
+		"tooltip": false
+	},
+
+	"hyprland/window": {
+		"format": "> {title}",
+		"max-length": 55
+	},
+
+	"hyprland/workspaces": {
+		"all-outputs": true,
+		"sort-by-number": true
+	},
+
+	"cpu": {
+		"interval": 3,
+		"format": "{usage}% <span font='Font Awesome 6 Free'></span>"
+	},
+
+	"temperature": {
+		"interval": 3,
+		"hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+		"input-filename": "temp1_input",
+		"critical-threshold": 80,
+		"format": "{temperatureC}°C <span font='Font Awesome 6 Free'></span>",
+		"format-critical": "{temperatureC}°C <span font='Font Awesome 6 Free'></span>",
+		"tooltip": false
+	},
+
+	"memory": {
+		"interval": 3,
+		"format": "{percentage}% <span font='Font Awesome 6 Free'></span>",
+		"format-alt": "{used}GiB/{total}GiB <span font='Font Awesome 6 Free'></span>",
+		"tooltip": true,
+		"tooltip-format": "SWAP: {swapUsed}GiB/{swapTotal}GiB"
+	},
+
+	"backlight": {
+		"format": "{percent}% <span font='Font Awesome 6 Free'></span>",
+		"device": "amdgpu_bl0",
+		"smooth-scrolling-threshold": 1.0,
+		"tooltip": false
+	},
+
+	"battery": {
+		"interval": 3,
+		"format": "{capacity}% {icon}",
+		"format-charging": "{capacity}% 󰂄",
+		"format-plugged": "{capacity}% 󱞜",
+		"format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+		"states": {
+			"warning": 30,
+			"critical": 20
+		},
+		"tooltip": true,
+		"tooltip-format": "{power} W"
+	},
+
+	"network": {
+		"interval": 3,
+		"format-wifi": "{essid} <span font='Font Awesome 6 Free'></span> {signalStrength}% <span font='Font Awesome 6 Free'></span>",
+		"format-ethernet": "{ifname} 󰈀 ",
+		"format-disconnected": "Disconnected! 󰛵 ",
+		"format-disabled": "Disabled! 󰲛 ",
+		"tooltip-format": "{ipaddr} 󰩠",
+		"on-click": "alacritty -e nmtui"
+	},
+
+	"pulseaudio": {
+		"format": "{volume}% {icon} {format_source}",
+		"format-muted": "{volume}% <span font='Font Awesome 6 Free'></span> {format_source}",
+		"format-source": "{volume}% <span font='Font Awesome 6 Free'></span>",
+		"format-source-muted": "{volume}% <span font='Font Awesome 6 Free'></span>",
+		"format-icons": {
+			"default": ["<span font='Font Awesome 6 Free'></span>", "<span font='Font Awesome 6 Free'></span>", "<span font='Font Awesome 6 Free'></span>"]
+		},
+		"scroll-step": 1,
+		"smooth-scrolling-threshold": 1.0,
+		"on-click": "pavucontrol-qt",
+		"on-click-middle": "pactl set-sink-mute 0 toggle"
+	}
+
+}
