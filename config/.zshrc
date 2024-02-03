@@ -3965,6 +3965,7 @@ alias sudo='doas'
 alias ls='eza -aa --icons --hyperlink'
 alias lin='Hyprland'
 alias vim='nvim'
+alias cat='bat --paging=never'
 
 ## genrefcard.pl settings
 
